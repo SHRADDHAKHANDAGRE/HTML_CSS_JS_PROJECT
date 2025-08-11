@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="highlightText.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <input type="text" id="text-to-search" placeholder="Enter a text to search">
+            <button onclick="search()">Search</button>
+        </div>
+    </div>
+    <p id="paragraph">
+        Paragraph writing is a key skill for organising and expressing ideas clearly. A paragraph typically starts with a topic sentence that introduces the main idea, followed by supporting sentences that provide details or examples. It ends with a concluding sentence that wraps up the idea and connects it to the next paragraph. Good paragraphs are focused and coherent, meaning all the sentences work together to support the main point. Learning to write effective paragraphs helps in creating well-structured essays, reports, and other written materials. By understanding paragraph writing, you can communicate your thoughts more clearly and effectively. A perfect and well-written paragraph comprises a key sentence, applicable supporting sentences, and a last (or transition) sentence. This structure is fundamental to maintaining your paragraph centred on the main concept and creating a clear and concise photo.
+    </p>
+
+    <script>
+        function search() {
+            let textToSearch = document.getElementById("text-to-search").value;
+            let paragraph = document.getElementById("paragraph");
+
+            if (!textToSearch) return;
+
+            textToSearch = textToSearch.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+            let pattern = new RegExp(`(${textToSearch})`, "gi");
+
+            paragraph.innerHTML = paragraph.textContent.replace(pattern, match => `<mark>${match}</mark>`);
+        }
+    </script>
+</body>
+</html>
